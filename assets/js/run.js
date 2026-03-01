@@ -1432,7 +1432,7 @@ window.showAccountModal = function () {
     };
 
     modal.innerHTML = `
-        <div style="background: white; border-radius: 4px; padding: 24px; min-width: 450px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div class="account-modal" style="background: white; border-radius: 4px; padding: 24px; width: 520px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 20px;">
                 <h2 style="font-size: 2rem; color: #333; margin: 0;">Hồ Sơ Của Tôi</h2>
                 <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: none; border: none; font-size: 2.4rem; cursor: pointer; color: #999;">&times;</button>
