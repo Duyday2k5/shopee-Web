@@ -41,8 +41,9 @@
                         </li>
                         <li class="navbar__item">
                             <span class="none-cursor">Kết nối</span>
-                            <a class="navbar__link-icons" href=""><i class="navbar__icon fa-brands fa-facebook"></i></a>
-                            <a class="navbar__link-icons" href=""><i
+                            <a class="navbar__link-icons" href="https://www.facebook.com/nhatduy.nguyen.250927"><i
+                                    class="navbar__icon fa-brands fa-facebook"></i></a>
+                            <a class="navbar__link-icons" href="https://www.facebook.com/nhatduy.nguyen.250927"><i
                                     class="navbar__icon fa-brands fa-instagram"></i></a>
                         </li>
 
@@ -105,9 +106,15 @@
                     <label for="mobile-search-checkbox" class="header__mb-search">
                         <i class="header__mb-search-icon fa-solid fa-magnifying-glass"></i>
                     </label>
+
+                    <!-- Mobile Hamburger Menu Button (Direct Flex Sibling) -->
+                    <div id="mobile-menu-btn" class="hide-on-pc" onclick="openMobileDrawer()"
+                        style="display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0 10px; z-index: 1000; position: relative;">
+                        <i class="fa-solid fa-bars" style="color: #ffffff; font-size: 2.6rem;"></i>
+                    </div>
                     <!-- logo shopee -->
                     <div class="header__logo">
-                        <a href="/" class="header__logo-link-home">
+                        <a href="" class="header__logo-link-home">
                             <svg viewBox="0 0 192 65" class="header__logo-link">
                                 <g fill-rule="evenodd">
                                     <path fill="#fff"
@@ -155,7 +162,8 @@
                     <!-- suitcase -->
                     <div class="header__search-cart"
                         style="display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
-                        <div class="display__search-carts">
+                        <!-- Cart Desktop Only -->
+                        <div class="display__search-carts hide-on-tablet-mb">
                             <i class="padding-12px fa-solid fa-cart-shopping"
                                 style="color: #ffffff; font-size: 2.6rem;"></i>
                             <span class="header__cart-badge cart__item-count">0</span>
@@ -176,11 +184,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-                        <!-- Mobile User Avatar -->
-                        <div id="mobile-user-avatar" class="hide-on-pc"
+                        <!-- Mobile User Avatar (Desktop Override) -->
+                        <div id="mobile-user-avatar" class="hide-on-pc hide-on-tablet-mb"
                             style="display: flex; align-items: center; justify-content: center; cursor: pointer;">
                         </div>
                     </div>
@@ -315,400 +322,447 @@
                         <!-- <a href="#" class="flash-sale__see-all">Xem tất cả <i class="fa-solid fa-angle-right"></i></a> -->
                     </div>
                     <div class="flash-sale__list">
-                        <div class="flash-sale__item">
-                            <div class="flash-sale__img-wrap"><img
-                                    src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lsthmds9y9x147"
-                                    onerror="this.src='https://placehold.co/200x200?text=Phone+Case'" alt="">
-                                <div class="flash-sale__discount"><span
-                                        style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
-                                        style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">40%</span>
-                                </div>
-                                <div class="product__item-love" style="left: -4px;">Yêu thích</div>
-                            </div>
-                            <div class="flash-sale__price">14.900 ₫</div>
-                            <div class="flash-sale__progress">
-                                <div class="flash-sale__progress-bar" style="width: 80%"></div>
-                                <div class="flash-sale__progress-text">Đang bán chạy</div>
-                            </div>
-                        </div>
-                        <div class="flash-sale__item">
-                            <div class="flash-sale__img-wrap"><img
-                                    src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lesxtn2o57sh9e"
-                                    onerror="this.src='https://placehold.co/200x200?text=Case'" alt="">
-                                <div class="flash-sale__discount"><span
-                                        style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
-                                        style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">28%</span>
-                                </div>
-                                <div class="product__item-love" style="left: -4px;">Yêu thích</div>
-                            </div>
-                            <div class="flash-sale__price">17.900 ₫</div>
-                            <div class="flash-sale__progress">
-                                <div class="flash-sale__progress-bar" style="width: 60%"></div>
-                                <div class="flash-sale__progress-text">Đang bán chạy</div>
-                            </div>
-                        </div>
-                        <div class="flash-sale__item">
-                            <div class="flash-sale__img-wrap"><img
-                                    src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfv69qax8w6td5"
-                                    onerror="this.src='https://placehold.co/200x200?text=TomJerry'" alt="">
-                                <div class="flash-sale__discount"><span
-                                        style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
-                                        style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">47%</span>
-                                </div>
-                                <div class="product__item-love" style="left: -4px;">Yêu thích</div>
-                            </div>
-                            <div class="flash-sale__price">15.900 ₫</div>
-                            <div class="flash-sale__progress">
-                                <div class="flash-sale__progress-bar" style="width: 40%"></div>
-                                <div class="flash-sale__progress-text">Đang bán chạy</div>
-                            </div>
-                        </div>
-                        <div class="flash-sale__item">
-                            <div class="flash-sale__img-wrap"><img
-                                    src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lezw4m5w6ix733"
-                                    onerror="this.src='https://placehold.co/200x200?text=KinhCuongLuc'" alt="">
-                                <div class="flash-sale__discount"><span
-                                        style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
-                                        style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">44%</span>
-                                </div>
-                            </div>
-                            <div class="flash-sale__price">16.800 ₫</div>
-                            <div class="flash-sale__progress">
-                                <div class="flash-sale__progress-bar" style="width: 85%"></div>
-                                <div class="flash-sale__progress-text">Đang bán chạy</div>
-                            </div>
-                        </div>
-                        <div class="flash-sale__item">
-                            <div class="flash-sale__img-wrap"><img
-                                    src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lera3e91uozs64"
-                                    onerror="this.src='https://placehold.co/200x200?text=NhayDay'" alt="">
-                                <div class="flash-sale__discount"><span
-                                        style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
-                                        style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">33%</span>
-                                </div>
-                                <div class="product__item-love" style="left: -4px;">Yêu thích</div>
-                            </div>
-                            <div class="flash-sale__price">26.900 ₫</div>
-                            <div class="flash-sale__progress">
-                                <div class="flash-sale__progress-bar" style="width: 20%"></div>
-                                <div class="flash-sale__progress-text">Đang bán chạy</div>
-                            </div>
-                        </div>
-                        <div class="flash-sale__item">
-                            <div class="flash-sale__img-wrap"><img
-                                    src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-leryn5b16tzd89"
-                                    onerror="this.src='https://placehold.co/200x200?text=KingKong'" alt="">
-                                <div class="flash-sale__discount"><span
-                                        style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
-                                        style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">27%</span>
-                                </div>
-                                <div class="product__item-love" style="left: -4px;">Yêu thích</div>
-                            </div>
-                            <div class="flash-sale__price">21.900 ₫</div>
-                            <div class="flash-sale__progress">
-                                <div class="flash-sale__progress-bar" style="width: 50%"></div>
-                                <div class="flash-sale__progress-text">Đang bán chạy</div>
-                            </div>
-                        </div>
+                        <!-- Flash sale items loaded by JS or static content -->
                     </div>
                 </div>
+            </div>
 
-                <div class="row sm-gutter product-margin">
-                    <div class="col l-2 m-12 c-12">
-                        <nav class="category advanced-filters">
-                            <h3 class="category__heading category__heading--main">
-                                <i class="fa-solid fa-list" style="margin-right: 8px;"></i> TẤT CẢ DANH MỤC
-                            </h3>
-                            <ul class="category__list">
-                                <li class="category__item category__item--active">
-                                    <a href="#" class="category__item-link">Tất Cả Danh Mục</a>
-                                </li>
-                                <li class="category__item"><a href="#" class="category__item-link">Điện tử</a></li>
-                                <li class="category__item"><a href="#" class="category__item-link">Mỹ phẩm</a></li>
-                                <li class="category__item"><a href="#" class="category__item-link">Thời trang</a></li>
-                                <li class="category__item"><a href="#" class="category__item-link">Giày dép</a></li>
-                                <li class="category__item"><a href="#" class="category__item-link">Khác</a></li>
+        </div>
+    </div>
+
+    <div class="product-margin__section">
+        <div class="grid wide product-margin">
+            <div class="row sm-gutter">
+                <div class="col l-2 m-0 c-0 hide-on-tablet-mb">
+                    <nav class="category advanced-filters">
+                        <h3 class="category__heading category__heading--main">
+                            <i class="fa-solid fa-list" style="margin-right: 8px;"></i> TẤT CẢ DANH MỤC
+                        </h3>
+                        <ul class="category__list">
+                            <li class="category__item category__item--active">
+                                <a href="#" class="category__item-link">Tất Cả Danh Mục</a>
+                            </li>
+                            <li class="category__item"><a href="#" class="category__item-link">Điện tử</a></li>
+                            <li class="category__item"><a href="#" class="category__item-link">Mỹ phẩm</a></li>
+                            <li class="category__item"><a href="#" class="category__item-link">Thời trang</a></li>
+                            <li class="category__item"><a href="#" class="category__item-link">Giày dép</a></li>
+                            <li class="category__item"><a href="#" class="category__item-link">Khác</a></li>
+                        </ul>
+
+                        <h3 class="category__heading category__heading--filter mt-4">
+                            <i class="fa-solid fa-filter" style="margin-right: 8px;"></i> BỘ LỌC TÌM KIẾM
+                        </h3>
+
+                        <div class="filter-group">
+                            <h4 class="filter-group__title">Nơi Bán</h4>
+                            <ul class="filter-group__list">
+                                <li><label class="filter-group__checkbox"><input type="checkbox"> <span>Hà
+                                            Nội</span></label></li>
+                                <li><label class="filter-group__checkbox"><input type="checkbox"> <span>TP. Hồ Chí
+                                            Minh</span></label></li>
+                                <li><label class="filter-group__checkbox"><input type="checkbox"> <span>Thái
+                                            Nguyên</span></label></li>
+                                <li><label class="filter-group__checkbox"><input type="checkbox"> <span>Vĩnh
+                                            Phúc</span></label></li>
                             </ul>
+                        </div>
 
-                            <h3 class="category__heading category__heading--filter mt-4">
-                                <i class="fa-solid fa-filter" style="margin-right: 8px;"></i> BỘ LỌC TÌM KIẾM
-                            </h3>
-
-                            <div class="filter-group">
-                                <h4 class="filter-group__title">Nơi Bán</h4>
-                                <ul class="filter-group__list">
-                                    <li><label class="filter-group__checkbox"><input type="checkbox"> <span>Hà
-                                                Nội</span></label></li>
-                                    <li><label class="filter-group__checkbox"><input type="checkbox"> <span>TP. Hồ Chí
-                                                Minh</span></label></li>
-                                    <li><label class="filter-group__checkbox"><input type="checkbox"> <span>Thái
-                                                Nguyên</span></label></li>
-                                    <li><label class="filter-group__checkbox"><input type="checkbox"> <span>Vĩnh
-                                                Phúc</span></label></li>
-                                </ul>
+                        <div class="filter-group filter-group-price">
+                            <h4 class="filter-group__title">Khoảng Giá</h4>
+                            <div class="filter-price">
+                                <input type="text" placeholder="₫ TỪ" class="filter-price__input">
+                                <span class="filter-price__dash">-</span>
+                                <input type="text" placeholder="₫ ĐẾN" class="filter-price__input">
                             </div>
+                            <button class="filter-price__btn btn__primary mt-10">ÁP DỤNG</button>
+                        </div>
 
-                            <div class="filter-group">
-                                <h4 class="filter-group__title">Khoảng Giá</h4>
-                                <div class="filter-price">
-                                    <input type="text" placeholder="₫ TỪ" class="filter-price__input">
-                                    <span class="filter-price__dash">-</span>
-                                    <input type="text" placeholder="₫ ĐẾN" class="filter-price__input">
-                                </div>
-                                <button class="filter-price__btn btn__primary mt-10">ÁP DỤNG</button>
-                            </div>
+                        <div class="filter-group">
+                            <h4 class="filter-group__title">Đánh Giá</h4>
+                            <ul class="filter-group__list">
+                                <li>
+                                    <div class="filter-rating"><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                </li>
+                                <li>
+                                    <div class="filter-rating"><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                        <span>trở lên</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="filter-rating"><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                        <span>trở lên</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="filter-rating"><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i
+                                            class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                        <span>trở lên</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <div class="filter-group">
-                                <h4 class="filter-group__title">Đánh Giá</h4>
-                                <ul class="filter-group__list">
-                                    <li>
-                                        <div class="filter-rating"><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                                    </li>
-                                    <li>
-                                        <div class="filter-rating"><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                                            <span>trở lên</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="filter-rating"><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                                class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-                                            <span>trở lên</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="filter-rating"><i class="fa-solid fa-star"></i><i
-                                                class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i
-                                                class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-                                            <span>trở lên</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- <div class="filter-group">
+                        <!-- <div class="filter-group">
                                 <h4 class="filter-group__title">Dịch Vụ & Khuyến Mãi</h4>
                                 <a href="#" class="filter-group__more">Thêm <i class="fa-solid fa-chevron-down"></i></a>
                             </div> -->
 
-                            <button class="filter-clear-btn mt-10">XÓA TẤT CẢ</button>
-                        </nav>
+                        <button class="filter-clear-btn mt-10">XÓA TẤT CẢ</button>
+                    </nav>
+                </div>
+
+                <div class="col l-10 m-12 c-12">
+                    <div class="home__filter hide-on-tablet-mb">
+                        <span class="home__filter-label">Sắp xếp theo</span>
+                        <button class="home__filter-btn btn btn__primary">Phổ biến</button>
+                        <button class="home__filter-btn btn">Mới nhất</button>
+                        <button class="home__filter-btn btn">Bán chạy</button>
+
+                        <div class="btn home__select-price display__block">
+                            <span class="home__select-span">Giá</span>
+                            <i class="home__select-icon fa-solid fa-angle-down"></i>
+                            <!-- display option price -->
+                            <ul class="home__select-option">
+                                <li class="select__option-price">
+                                    <a href="" class="option__price-link">Giá: Thấp đến Cao</a>
+                                </li>
+                                <li class="select__option-price">
+                                    <a href="" class="option__price-link">Giá: Cao đến Thấp</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="home__select-page">
+                            <span class="home__select-page-num">
+                                <span class="select__number">1</span>/16
+                            </span>
+
+                            <div class="home__select-control">
+                                <a href="" class="select__control-btn select__control-btn-disable">
+                                    <i class="control__btn-icon fas fa-angle-left"></i>
+                                </a>
+
+                                <a href="" class="select__control-btn">
+                                    <i class="control__btn-icon fas fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col l-10 m-12 c-12">
-                        <div class="home__filter hide-on-tablet-mb">
-                            <span class="home__filter-label">Sắp xếp theo</span>
-                            <button class="home__filter-btn btn btn__primary">Phổ biến</button>
-                            <button class="home__filter-btn btn">Mới nhất</button>
-                            <button class="home__filter-btn btn">Bán chạy</button>
+                    <!-- More Products -->
+                    <div class="home__product">
+                        <div class="row sm-gutter">
+                            <!-- Products loaded dynamically by JavaScript -->
+                        </div>
+                    </div>
 
-                            <div class="btn home__select-price display__block">
-                                <span class="home__select-span">Giá</span>
-                                <i class="home__select-icon fa-solid fa-angle-down"></i>
-                                <!-- display option price -->
-                                <ul class="home__select-option">
-                                    <li class="select__option-price">
-                                        <a href="" class="option__price-link">Giá: Thấp đến Cao</a>
-                                    </li>
-                                    <li class="select__option-price">
-                                        <a href="" class="option__price-link">Giá: Cao đến Thấp</a>
-                                    </li>
-                                </ul>
-                            </div>
+                    <!-- pagination (phan trang) -->
+                    <ul class="pagination">
+                        <li class="pagination__item">
+                            <i class="mr-10 pagination__item-icon fa fa-angle-left"></i>
+                        </li>
+                        <li class="pagination__item pagination__item-active"><a href=""
+                                class="pagination__item-link">1</a></li>
+                        <li class="pagination__item"><a href="" class="pagination__item-link">2</a></li>
+                        <li class="pagination__item"><a href="" class="pagination__item-link">3</a></li>
+                        <li class="pagination__item"><a href="" class="pagination__item-link">4</a></li>
+                        <li class="pagination__item"><a href="" class="pagination__item-link">5</a></li>
+                        <li class="pagination__item btn__default"><a href="" class="pagination__item-link">...</a>
+                        </li>
+                        <li class="pagination__item"><a href="" class="pagination__item-link">99</a></li>
 
-                            <div class="home__select-page">
-                                <span class="home__select-page-num">
-                                    <span class="select__number">1</span>/16
-                                </span>
+                        <li class="pagination__item">
 
-                                <div class="home__select-control">
-                                    <a href="" class="select__control-btn select__control-btn-disable">
-                                        <i class="control__btn-icon fas fa-angle-left"></i>
-                                    </a>
+                            <i class="ml-10 pagination__item-icon fa fa-angle-right"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal continue -->
 
-                                    <a href="" class="select__control-btn">
-                                        <i class="control__btn-icon fas fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-2-4 m-6 c-12">
+                    <h3 class="footer__heading">chăm sóc khách hàng</h3>
+                    <ul class="footer-list">
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">trung tâm trợ giúp </a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">shopee blog </a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">shopee mail</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">hướng dẫn mua hàng</a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">hướng dẫn bán hàng </a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">thanh toán</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">shopee xu</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">vận chuyển</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">trả hàng & hoàn tiền</a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">chăm sóc khách hàng</a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">chính sách bảo hành</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col l-2-4 m-6 c-12">
+                    <h3 class="footer__heading">về shopee</h3>
+                    <ul class="footer-list">
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">giới thiệu về shopee
+                                việt nam</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">tuyển dụng</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">điều khoản shopee</a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">chính sách bảo mật</a>
+                        </li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">chính hãng</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">kênh người bán</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">flash sales</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">Chương Trình Tiếp Thị
+                                Liên Kết Shopee</a></li>
+                        <li class="footer-list__item"><a href="#" class="footer-item__link">liên hệ với truyền
+                                thông</a></li>
+                    </ul>
+                </div>
+
+                <div class="col l-2-4 m-12 c-12">
+                    <h3 class="footer__heading">thanh toán</h3>
+                    <div class="footer__pay">
+                        <img src="https://down-vn.img.susercontent.com/file/d4bbea4570b93bfd5fc652ca82a262a8" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/a0a9062ebe19b45c1ae0506f16af5c16" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/38fd98e55806c3b2e4535c4e4a6c4c08" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/bc2a874caeee705449c164be385b796c" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/2c46b83d84111ddc32cfd3b5995d9281" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/5e3f0bee86058637ff23cfdf2e14ca09" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/5e3f0bee86058637ff23cfdf2e14ca09" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/0217f1d345587aa0a300e69e2195c492" alt=""
+                            class="footer__pay-img">
+                    </div>
+                    <h3 class="footer__heading-2">đơn vị vận chuyển</h3>
+                    <div class="footer__pay">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-50009109-159200e3e365de418aae52b840f24185"
+                            alt="" class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/d10b0ec09f0322f9201a4f3daf378ed2" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-50009109-64f0b242486a67a3d29fd4bcf024a8c6"
+                            alt="" class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/59270fb2f3fbb7cbc92fca3877edde3f" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/957f4eec32b963115f952835c779cd2c" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/957f4eec32b963115f952835c779cd2c" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/957f4eec32b963115f952835c779cd2c" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/6e3be504f08f88a15a28a9a447d94d3d" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/b8348201b4611fc3315b82765d35fc63" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/0b3014da32de48c03340a4e4154328f6" alt=""
+                            class="footer__pay-img">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-50009109-ec3ae587db6309b791b78eb8af6793fd"
+                            alt="" class="footer__pay-img">
+                    </div>
+                </div>
+
+                <div class="col l-2-4 m-6 c-12">
+                    <h3 class="footer__heading">theo dõi chúng tôi</h3>
+                    <div class="footer__social">
+                        <div class="footer__social-wrap">
+                            <i class="footer__social-icon fa-brands fa-facebook"></i>
+                            <a href="" class="footer__social-link">Facebook</a>
                         </div>
 
-                        <!-- More Products -->
-                        <div class="home__product">
-                            <div class="row sm-gutter">
-                                <!-- Products loaded dynamically by JavaScript -->
-                            </div>
+                        <div class="footer__social-wrap">
+                            <i class="footer__social-icon fa-brands fa-square-instagram"></i>
+                            <a href="" class="footer__social-link">Instagram</a>
                         </div>
 
-                        <!-- pagination (phan trang) -->
-                        <ul class="pagination">
-                            <li class="pagination__item">
-                                <i class="mr-10 pagination__item-icon fa fa-angle-left"></i>
-                            </li>
-                            <li class="pagination__item pagination__item-active"><a href=""
-                                    class="pagination__item-link">1</a></li>
-                            <li class="pagination__item"><a href="" class="pagination__item-link">2</a></li>
-                            <li class="pagination__item"><a href="" class="pagination__item-link">3</a></li>
-                            <li class="pagination__item"><a href="" class="pagination__item-link">4</a></li>
-                            <li class="pagination__item"><a href="" class="pagination__item-link">5</a></li>
-                            <li class="pagination__item btn__default"><a href="" class="pagination__item-link">...</a>
-                            </li>
-                            <li class="pagination__item"><a href="" class="pagination__item-link">99</a></li>
+                        <div class="footer__social-wrap">
+                            <i class="footer__social-icon fa-brands fa-linkedin"></i>
+                            <a href="" class="footer__social-link">Linkedln</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-2-4 m-6 c-12">
+                    <h3 class="footer__heading">tải ứng dụng shoppe ngay thôi</h3>
+                    <div class="footer__download">
+                        <img src="/assets/img/qr-shopee.png" alt="QR Code" class="footer__qr">
 
-                            <li class="pagination__item">
-
-                                <i class="ml-10 pagination__item-icon fa fa-angle-right"></i>
-                            </li>
-                        </ul>
+                        <div class="footer__download-app">
+                            <a href="" class="footer__download-app-link"><img
+                                    src="https://down-vn.img.susercontent.com/file/ad01628e90ddf248076685f73497c163"
+                                    alt="" class="footer__app-img"></a>
+                            <a href="" class="footer__download-app-link"><img
+                                    src="https://down-vn.img.susercontent.com/file/ae7dced05f7243d0f3171f786e123def"
+                                    alt="" class="footer__app-img"></a>
+                            <a href="" class="footer__download-app-link"><img
+                                    src="https://down-vn.img.susercontent.com/file/35352374f39bdd03b25e7b83542b2cb0"
+                                    alt="" class="footer__app-img"></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- modal continue -->
+    </footer>
 
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="grid wide">
-                <div class="row">
-                    <div class="col l-2-4 m-6 c-12">
-                        <h3 class="footer__heading">chăm sóc khách hàng</h3>
-                        <ul class="footer-list">
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">trung tâm trợ giúp </a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">shopee blog </a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">shopee mail</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">hướng dẫn mua hàng</a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">hướng dẫn bán hàng </a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">thanh toán</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">shopee xu</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">vận chuyển</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">trả hàng & hoàn tiền</a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">chăm sóc khách hàng</a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">chính sách bảo hành</a>
-                            </li>
-                        </ul>
-                    </div>
 
-                    <div class="col l-2-4 m-6 c-12">
-                        <h3 class="footer__heading">về shopee</h3>
-                        <ul class="footer-list">
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">giới thiệu về shopee
-                                    việt nam</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">tuyển dụng</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">điều khoản shopee</a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">chính sách bảo mật</a>
-                            </li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">chính hãng</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">kênh người bán</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">flash sales</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">Chương Trình Tiếp Thị
-                                    Liên Kết Shopee</a></li>
-                            <li class="footer-list__item"><a href="#" class="footer-item__link">liên hệ với truyền
-                                    thông</a></li>
-                        </ul>
-                    </div>
 
-                    <div class="col l-2-4 m-12 c-12">
-                        <h3 class="footer__heading">thanh toán</h3>
-                        <div class="footer__pay">
-                            <img src="https://down-vn.img.susercontent.com/file/d4bbea4570b93bfd5fc652ca82a262a8" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/a0a9062ebe19b45c1ae0506f16af5c16" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/38fd98e55806c3b2e4535c4e4a6c4c08" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/bc2a874caeee705449c164be385b796c" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/2c46b83d84111ddc32cfd3b5995d9281" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/5e3f0bee86058637ff23cfdf2e14ca09" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/5e3f0bee86058637ff23cfdf2e14ca09" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/0217f1d345587aa0a300e69e2195c492" alt=""
-                                class="footer__pay-img">
-                        </div>
-                        <h3 class="footer__heading-2">đơn vị vận chuyển</h3>
-                        <div class="footer__pay">
-                            <img src="https://down-vn.img.susercontent.com/file/vn-50009109-159200e3e365de418aae52b840f24185"
-                                alt="" class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/d10b0ec09f0322f9201a4f3daf378ed2" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/vn-50009109-64f0b242486a67a3d29fd4bcf024a8c6"
-                                alt="" class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/59270fb2f3fbb7cbc92fca3877edde3f" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/957f4eec32b963115f952835c779cd2c" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/957f4eec32b963115f952835c779cd2c" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/957f4eec32b963115f952835c779cd2c" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/6e3be504f08f88a15a28a9a447d94d3d" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/b8348201b4611fc3315b82765d35fc63" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/0b3014da32de48c03340a4e4154328f6" alt=""
-                                class="footer__pay-img">
-                            <img src="https://down-vn.img.susercontent.com/file/vn-50009109-ec3ae587db6309b791b78eb8af6793fd"
-                                alt="" class="footer__pay-img">
-                        </div>
-                    </div>
+    </div>
 
-                    <div class="col l-2-4 m-6 c-12">
-                        <h3 class="footer__heading">theo dõi chúng tôi</h3>
-                        <div class="footer__social">
-                            <div class="footer__social-wrap">
-                                <i class="footer__social-icon fa-brands fa-facebook"></i>
-                                <a href="" class="footer__social-link">Facebook</a>
-                            </div>
-
-                            <div class="footer__social-wrap">
-                                <i class="footer__social-icon fa-brands fa-square-instagram"></i>
-                                <a href="" class="footer__social-link">Instagram</a>
-                            </div>
-
-                            <div class="footer__social-wrap">
-                                <i class="footer__social-icon fa-brands fa-linkedin"></i>
-                                <a href="" class="footer__social-link">Linkedln</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l-2-4 m-6 c-12">
-                        <h3 class="footer__heading">tải ứng dụng shoppe ngay thôi</h3>
-                        <div class="footer__download">
-                            <img src="/assets/img/qr-shopee.png" alt="QR Code" class="footer__qr">
-
-                            <div class="footer__download-app">
-                                <a href="" class="footer__download-app-link"><img
-                                        src="https://down-vn.img.susercontent.com/file/ad01628e90ddf248076685f73497c163"
-                                        alt="" class="footer__app-img"></a>
-                                <a href="" class="footer__download-app-link"><img
-                                        src="https://down-vn.img.susercontent.com/file/ae7dced05f7243d0f3171f786e123def"
-                                        alt="" class="footer__app-img"></a>
-                                <a href="" class="footer__download-app-link"><img
-                                        src="https://down-vn.img.susercontent.com/file/35352374f39bdd03b25e7b83542b2cb0"
-                                        alt="" class="footer__app-img"></a>
-                            </div>
-                        </div>
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-drawer__overlay" id="mobileDrawerOverlay"></div>
+    <!-- Mobile Drawer Content -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <!-- 1. Profile Area -->
+        <div class="mobile-drawer__profile" id="drawerProfileAuth">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                <div class="drawer-profile__info" onclick="closeMobileDrawer(); openAuthModal('login')"
+                    style="cursor: pointer;">
+                    <i class="fa-regular fa-circle-user" style="font-size: 4rem; color: #ccc;"></i>
+                    <div class="drawer-profile__text">
+                        <h3 class="drawer-profile__name">Khách</h3>
+                        <span class="drawer-profile__status">Đăng nhập / Đăng ký</span>
                     </div>
                 </div>
+                <button class="drawer-close-btn" onclick="closeMobileDrawer()"
+                    style="background: none; border: none; font-size: 3.2rem; line-height: 1; color: #999; cursor: pointer; padding: 0 5px;">&times;</button>
             </div>
-        </footer>
+        </div>
 
+        <div class="mobile-drawer__nav-list">
+            <!-- 2. Main Action Options -->
+            <ul class="drawer-nav__group mb-12">
+                <li class="drawer-nav__item" onclick="closeMobileDrawer(); showCartModal();">
+                    <a href="javascript:void(0)" class="drawer-nav__link">
+                        <i class="fa-solid fa-cart-shopping drawer-nav__icon"></i>
+                        <span>Xem Giỏ hàng</span>
+                        <span class="drawer-nav__badge cart__item-count drawer-cart-badge">0</span>
+                    </a>
+                </li>
+                <li class="drawer-nav__item" onclick="closeMobileDrawer(); showPurchaseModal();">
+                    <a href="javascript:void(0)" class="drawer-nav__link">
+                        <i class="fa-solid fa-file-invoice drawer-nav__icon"></i>
+                        <span>Lịch sử mua hàng</span>
+                    </a>
+                </li>
+                <!-- <li class="drawer-nav__item">
+                    <a href="javascript:void(0)" class="drawer-nav__link">
+                        <i class="fa-solid fa-heart drawer-nav__icon"></i>
+                        <span>Yêu thích</span>
+                    </a>
+                </li> -->
+            </ul>
 
+            <!-- 3. Lọc Tỉnh Thành -->
+            <div class="drawer-nav__filter-group">
+                <h4 class="drawer-nav__title"><i class="fa-solid fa-location-dot" style="color: #0b5cff;"></i> LỌC TỈNH
+                    THÀNH</h4>
+                <div class="drawer-nav__select-wrap">
+                    <select class="drawer-nav__select" id="drawerLocationSelect">
+                        <option value="all">Toàn quốc</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                        <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                        <option value="Thái Nguyên">Thái Nguyên</option>
+                        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                    </select>
+                </div>
+            </div>
 
+            <!-- 4. Danh Mục Sản Phẩm -->
+            <div class="drawer-nav__filter-group">
+                <h4 class="drawer-nav__title"><i class="fa-solid fa-shapes" style="color: #0b5cff;"></i> DANH MỤC SẢN
+                    PHẨM</h4>
+                <ul class="drawer-nav__category-list">
+                    <li>
+                        <label class="drawer-category__radio">
+                            <input type="radio" name="drawer-category" value="all" checked>
+                            <span class="drawer-category__radio-custom"></span>
+                            Tất cả
+                        </label>
+                    </li>
+                    <li>
+                        <label class="drawer-category__radio">
+                            <input type="radio" name="drawer-category" value="Điện tử">
+                            <span class="drawer-category__radio-custom"></span>
+                            Điện tử
+                        </label>
+                    </li>
+                    <li>
+                        <label class="drawer-category__radio">
+                            <input type="radio" name="drawer-category" value="Mỹ phẩm">
+                            <span class="drawer-category__radio-custom"></span>
+                            Mỹ phẩm
+                        </label>
+                    </li>
+                    <li>
+                        <label class="drawer-category__radio">
+                            <input type="radio" name="drawer-category" value="Thời trang">
+                            <span class="drawer-category__radio-custom"></span>
+                            Thời trang
+                        </label>
+                    </li>
+                    <li>
+                        <label class="drawer-category__radio">
+                            <input type="radio" name="drawer-category" value="Giày dép">
+                            <span class="drawer-category__radio-custom"></span>
+                            Giày dép
+                        </label>
+                    </li>
+                    <li>
+                        <label class="drawer-category__radio">
+                            <input type="radio" name="drawer-category" value="Khác">
+                            <span class="drawer-category__radio-custom"></span>
+                            Khác
+                        </label>
+                    </li>
+                </ul>
+            </div>
 
+            <!-- 5. Khoảng giá -->
+            <div class="drawer-nav__filter-group">
+                <h4 class="drawer-nav__title"><i class="fa-solid fa-dollar-sign" style="color: #0b5cff;"></i> LỌC KHOẢNG
+                    GIÁ</h4>
+                <div class="drawer-price-filter">
+                    <input type="number" id="drawerPriceMin" placeholder="₫ TỪ">
+                    <span>-</span>
+                    <input type="number" id="drawerPriceMax" placeholder="₫ ĐẾN">
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="drawer-price-btn" onclick="applyDrawerFilters(); closeMobileDrawer();"
+                        style="flex: 1;">ÁP DỤNG</button>
+                    <button class="drawer-price-btn" onclick="clearDrawerFilters()"
+                        style="flex: 1; background-color: #f5f5f5; color: #333;">XÓA TẤT CẢ</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-drawer__footer">
+            <a href="#" class="drawer-footer__link">
+                <i class="fa-solid fa-headset"></i>
+                Hỗ trợ khách hàng
+            </a>
+        </div>
     </div>
 
 </body>

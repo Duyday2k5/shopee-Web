@@ -4,6 +4,11 @@
         --navbar-height: 0;
     }
 
+    .product-margin {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
     .hide-on-tablet-mb {
         display: none !important;
     }
@@ -74,18 +79,6 @@
         /* Hide dense titles */
     }
 
-    /* Hide horizontal scrollbars */
-    .advanced-filters::-webkit-scrollbar,
-    .header__sort-bar::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .advanced-filters,
-    .header__sort-bar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-
     .category__list {
         display: flex;
         flex-direction: row;
@@ -137,18 +130,8 @@
 
     .header__search-cart {
         margin: 0 12px 0 0;
-        width: auto;
+        width: 80px;
         justify-content: right;
-    }
-
-    #mobile-user-avatar {
-        display: flex !important;
-        margin-left: 15px;
-    }
-    
-    #mobile-user-avatar img {
-        width: 32px !important;
-        height: 32px !important;
     }
 
     .header__logo {
@@ -157,6 +140,14 @@
 
     .header__search {
         margin: 16px 0;
+    }
+
+    #mobile-menu-btn {
+        margin-right: 32px;
+    }
+
+    .flash-sale__item {
+        width: calc(100% / 4 - 10px);
     }
 }
 
@@ -170,14 +161,42 @@
         display: none !important;
     }
 
-    .header__mb-search {
-        display: block;
-        /* padding: 0 8px; */
+    /* Force Icon Re-ordering distinctly on Mobile screens without touching Desktop DOM trees */
+    #mobile-menu-btn {
+        order: 1;
+        margin-right: -24px;
     }
 
-    .header__search {
+    .header__mb-search {
+        position: absolute;
+        right: 15px;
+        display: block;
+        padding-top: 5px;
+        /* Visual balance */
+    }
+
+    .header__logo {
+        order: 2;
+        /* Center */
+        margin: auto;
+    }
+
+    .header__search-cart {
+        order: 4;
+        /* Right */
+        margin: 0;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Force Cart Visibility on Mobile */
+    .display__search-carts {
+        display: none !important;
+    }
+
+    .header__cart-badge {
+        right: -8px;
+        /* Adjustment for mobile badge position */
     }
 
     .header__logo-link {
@@ -250,16 +269,19 @@
         left: 0;
     }
 
-    /* Polish Mobile User Avatar Spacing */
     #mobile-user-avatar {
-        display: flex !important;
-        margin-left: 10px;
+        display: none !important;
     }
-    
-    #mobile-user-avatar img {
-        width: 28px !important;
-        height: 28px !important;
+
+    .flash-sale__item {
+        width: calc(100% / 3 - 10px);
     }
+
+    .flash-sale__list::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Polish Mobile Category Layout (Horizontal Scroll) */
     .advanced-filters {
         display: flex;
         flex-direction: row;

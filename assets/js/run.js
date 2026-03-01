@@ -46,6 +46,7 @@ const AppState = {
                 this.products = data.products;
                 this.filteredProducts = [...this.products];
                 UI.renderProducts(this.getProductsForCurrentPage());
+                UI.renderFlashSale(this.products);
                 UI.updatePagination();
                 UI.updateUserUI();
                 UI.updateCartCount();
@@ -294,6 +295,39 @@ const UI = {
         setTimeout(() => alertDiv.remove(), 3000);
     },
 
+    renderFlashSale(products) {
+        const flashSaleList = document.querySelector('.flash-sale__list');
+        if (!flashSaleList) return;
+
+        flashSaleList.innerHTML = '';
+
+        // Let's render the top 6 requested products for flash sale based on high discount 
+        // For simplicity, we just take the first 6 products that have discounts
+        const flashSaleProducts = products.filter(p => p.discount > 0).slice(0, 6);
+
+        flashSaleProducts.forEach(product => {
+            const itemHTML = `
+                <div class="flash-sale__item" data-product-id="${product.id}" onclick="showProductDetail(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                    <div class="flash-sale__img-wrap"><img
+                            src="${product.image}"
+                            onerror="this.src='https://placehold.co/200x200?text=Image'" alt="${product.name}">
+                        <div class="flash-sale__discount"><span
+                                style="display:block; font-size: 1rem; color: #ee4d2d; text-transform: uppercase;">Giảm</span><span
+                                style="display:block; font-size: 1.2rem; font-weight: 700; color: #ee4d2d;">${product.discount}%</span>
+                        </div>
+                        <div class="product__item-love" style="left: -4px;">Yêu thích</div>
+                    </div>
+                    <div class="flash-sale__price">${product.price.toLocaleString('vi-VN')} ₫</div>
+                    <div class="flash-sale__progress">
+                        <div class="flash-sale__progress-bar" style="width: ${Math.min((product.sold / 100), 100)}%"></div>
+                        <div class="flash-sale__progress-text">Đã bán ${product.sold}</div>
+                    </div>
+                </div>
+            `;
+            flashSaleList.insertAdjacentHTML('beforeend', itemHTML);
+        });
+    },
+
     renderProducts(products) {
         const productContainer = document.querySelector('.home__product .row');
         if (!productContainer) return;
@@ -310,7 +344,9 @@ const UI = {
             colDiv.className = 'col l-2-4 m-4 c-6';
             colDiv.innerHTML = `
         <a href="javascript:void(0)" class="home__product-item" data-product-id="${product.id}">
-          <div class="product__item-img" style="background-image: url('${product.image}')"></div>
+          <div class="product__item-img" style="background-image: url('${product.image}')">
+            <img class="product__item-sale-img" src="./assets/img/sale3-3.png" alt="Sale">
+          </div>
           <h4 class="product__item-heading">${product.name}</h4>
           <div class="product__item-price">
             <span class="product__item-price-old">₫${product.originalPrice.toLocaleString('vi-VN')}</span>
@@ -323,7 +359,6 @@ const UI = {
           <span class="product__item-province">${product.location}</span>
           <div class="product__item-love">Yêu thích+</div>
           <div class="product__item-discount">-${product.discount}%</div>
-          <img class="product__item-sale-img" src="./assets/img/sale3-3.png" alt="Sale">
         </a>
       `;
             productContainer.appendChild(colDiv);
@@ -433,6 +468,10 @@ const UI = {
         const cartCount = document.querySelector('.cart__item-count');
         if (cartCount) cartCount.textContent = AppState.cart.length;
 
+        // Sync drawer badge
+        const drawerBadges = document.querySelectorAll('.drawer-cart-badge');
+        drawerBadges.forEach(b => b.textContent = AppState.cart.length);
+
         const cartBody = document.querySelector('.cart__body');
         const cartWrap = document.querySelector('.header__cart-wrap');
         const cartNoImg = document.querySelector('.cart-container__img');
@@ -454,7 +493,7 @@ const UI = {
                         <span class="cart__body-delete" onclick="CartManager.removeFromCart(${item.id})" style="font-size: 1.4rem; color: #333; cursor: pointer; padding: 0 5px; opacity: 0.8;">Xóa</span>
                     </li>
                 `).join('');
-                
+
                 // Bind the Cart Modal
                 const cartFooterBtn = document.querySelector('.cart__footer button');
                 if (cartFooterBtn) {
@@ -493,6 +532,24 @@ const UI = {
             if (mobileUserAvatar) {
                 mobileUserAvatar.innerHTML = `<img src="${AppState.currentUser.avatar || `https://i.pravatar.cc/150?u=${AppState.currentUser.id}`}" alt="Avatar" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.4);" onclick="showAccountModal()">`;
             }
+
+            // Sync Drawer Profile (Logged In)
+            const drawerProfileAuth = document.getElementById('drawerProfileAuth');
+            if (drawerProfileAuth) {
+                drawerProfileAuth.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                        <div class="drawer-profile__info" style="cursor: pointer;" onclick="closeMobileDrawer(); showAccountModal()">
+                            <img src="${AppState.currentUser.avatar || `https://i.pravatar.cc/150?u=${AppState.currentUser.id}`}" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #e8e8e8;">
+                            <div class="drawer-profile__text">
+                                <h3 class="drawer-profile__name">${AppState.currentUser.fullName}</h3>
+                                <span class="drawer-profile__status" style="color: #28a745;">Thành viên Vàng</span>
+                            </div>
+                        </div>
+                        <button class="drawer-close-btn" onclick="closeMobileDrawer()" style="background: none; border: none; font-size: 3.2rem; line-height: 1; color: #999; cursor: pointer; padding: 0 5px;">&times;</button>
+                    </div>
+                    <button class="drawer-profile__logout-btn" onclick="closeMobileDrawer(); Auth.logout()">Đăng xuất</button>
+                `;
+            }
         } else {
             authSignupItem.style.display = 'inline-block';
             authSignupItem.textContent = 'Đăng ký';
@@ -507,6 +564,23 @@ const UI = {
 
             if (mobileUserAvatar) {
                 mobileUserAvatar.innerHTML = `<i class="fa-regular fa-circle-user" style="font-size: 2.6rem; color: #fff;" onclick="openAuthModal('login')"></i>`;
+            }
+
+            // Sync Drawer Profile (Logged Out)
+            const drawerProfileAuth = document.getElementById('drawerProfileAuth');
+            if (drawerProfileAuth) {
+                drawerProfileAuth.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                        <div class="drawer-profile__info" onclick="closeMobileDrawer(); openAuthModal('login')" style="cursor: pointer;">
+                            <i class="fa-regular fa-circle-user" style="font-size: 4rem; color: #ccc;"></i>
+                            <div class="drawer-profile__text">
+                                <h3 class="drawer-profile__name">Khách</h3>
+                                <span class="drawer-profile__status">Đăng nhập / Đăng ký</span>
+                            </div>
+                        </div>
+                        <button class="drawer-close-btn" onclick="closeMobileDrawer()" style="background: none; border: none; font-size: 3.2rem; line-height: 1; color: #999; cursor: pointer; padding: 0 5px;">&times;</button>
+                    </div>
+                `;
             }
         }
     },
@@ -915,6 +989,137 @@ function initApp() {
     const searchSuggestionBox = document.querySelector('#searchSuggestionBox');
     const searchSuggestionHeading = document.getElementById('searchSuggestionHeading');
 
+    window.deletePurchaseHistory = function () {
+        if (confirm('Bạn có chắc chắn muốn xóa toàn bộ lịch sử đơn mua?')) {
+            AppState.purchases = [];
+            AppState.saveToLocalStorage();
+            UI.showAlert('Đã xóa toàn bộ lịch sử đơn mua', 'success');
+
+            // Xóa phần tử modal khỏi DOM sau khi thao tác
+            const modalEl = document.querySelector('.purchase-modal-container');
+            if (modalEl && modalEl.parentElement && modalEl.parentElement.parentElement) {
+                modalEl.parentElement.parentElement.remove();
+            }
+        }
+    };
+
+    // =========================================
+    // MOBILE DRAWER MENU LOGIC
+    // =========================================
+    window.openMobileDrawer = function () {
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('mobileDrawerOverlay');
+        if (drawer && overlay) {
+            overlay.style.display = 'block';
+            // force reflow
+            void overlay.offsetWidth;
+            overlay.style.opacity = '1';
+            drawer.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    };
+
+    window.closeMobileDrawer = function () {
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('mobileDrawerOverlay');
+        if (drawer && overlay) {
+            drawer.classList.remove('active');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore background scrolling
+            }, 300);
+        }
+    };
+
+    window.applyDrawerFilters = function () {
+        // Collect settings from Drawer
+        const locationVal = document.getElementById('drawerLocationSelect').value;
+        const catRadio = document.querySelector('input[name="drawer-category"]:checked');
+        const minP = document.getElementById('drawerPriceMin').value;
+        const maxP = document.getElementById('drawerPriceMax').value;
+
+        // 1. Sync Category FIRST (Because AppState.setCategory clears Advanced Filters UI natively)
+        if (catRadio) {
+            AppState.setCategory(catRadio.value); // This automatically triggers filterProducts('') and UI clears
+        }
+
+        // Now overlay the advanced UI state with the Drawer's state
+
+        // 2. Sync Location
+        const filterGroups = document.querySelectorAll('.filter-group');
+        let locationGroup = null;
+        filterGroups.forEach(g => {
+            const h4 = g.querySelector('h4');
+            if (h4 && h4.textContent.includes('Nơi Bán')) {
+                locationGroup = g;
+            }
+        });
+
+        if (locationGroup) {
+            const locationCheckboxes = locationGroup.querySelectorAll('input[type="checkbox"]');
+            locationCheckboxes.forEach(cb => {
+                cb.checked = false; // Reset first
+                if (locationVal && locationVal !== 'all') {
+                    const spanText = cb.nextElementSibling.textContent.trim().replace(/\s+/g, ' ');
+                    if (spanText.includes(locationVal)) {
+                        cb.checked = true;
+                    }
+                }
+            });
+        }
+
+        // 3. Sync Prices
+        const desktopPrices = document.querySelectorAll('.filter-price__input');
+        if (desktopPrices.length === 2) {
+            desktopPrices[0].value = minP || '';
+            desktopPrices[1].value = maxP || '';
+        }
+
+        // Execute filter pipeline explicitly with new UI state
+        if (typeof window.runAdvancedFilters === 'function') {
+            window.runAdvancedFilters();
+        }
+    };
+
+    window.clearDrawerFilters = function () {
+        // Reset Drawer State
+        document.getElementById('drawerLocationSelect').value = 'all';
+        document.getElementById('drawerPriceMin').value = '';
+        document.getElementById('drawerPriceMax').value = '';
+
+        const allDrawerRadios = document.querySelectorAll('input[name="drawer-category"]');
+        allDrawerRadios.forEach(radio => {
+            if (radio.value === 'all') {
+                radio.checked = true;
+            } else {
+                radio.checked = false;
+            }
+        });
+
+        // Trigger desktop sync explicitly with cleared state
+        window.applyDrawerFilters();
+    };
+
+    // Bind overlay click to close drawer
+    const overlay = document.getElementById('mobileDrawerOverlay');
+    if (overlay) {
+        overlay.addEventListener('click', closeMobileDrawer);
+    }
+
+    // Bind hamburger button
+    const hambBtn = document.getElementById('mobile-menu-btn');
+    if (hambBtn) {
+        hambBtn.addEventListener('click', openMobileDrawer);
+    }
+
+    // Bind instant mobile drawer filtering
+    const drawerLocation = document.getElementById('drawerLocationSelect');
+    if (drawerLocation) {
+        drawerLocation.addEventListener('change', window.applyDrawerFilters);
+    }
+    const drawerCats = document.querySelectorAll('input[name="drawer-category"]');
+    drawerCats.forEach(radio => radio.addEventListener('change', window.applyDrawerFilters));
     window.applySearch = function (term) {
         if (searchInput) {
             searchInput.value = term;
@@ -1062,6 +1267,22 @@ function initApp() {
     // Attach listener to checkbox spans for custom UI logic
     filterCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
+            // Also sync back to drawer for consistency
+            const activeDesktopLocs = Array.from(filterCheckboxes).filter(cb => cb.checked).map(cb => cb.nextElementSibling.textContent.trim().replace(/\s+/g, ' '));
+            const drawerLoc = document.getElementById('drawerLocationSelect');
+            if (drawerLoc) {
+                if (activeDesktopLocs.length > 0) {
+                    for (let i = 0; i < drawerLoc.options.length; i++) {
+                        if (drawerLoc.options[i].value === activeDesktopLocs[0]) {
+                            drawerLoc.selectedIndex = i;
+                            break;
+                        }
+                    }
+                } else {
+                    drawerLoc.value = 'all';
+                }
+            }
+
             if (typeof window.runAdvancedFilters === 'function') {
                 window.runAdvancedFilters();
             }
@@ -1133,7 +1354,7 @@ function initApp() {
         // 3. Location (Nơi bán)
         const activeLocations = Array.from(filterCheckboxes)
             .filter(cb => cb.checked && cb.closest('.filter-group').querySelector('h4').textContent.includes('Nơi Bán'))
-            .map(cb => cb.nextElementSibling.textContent.trim());
+            .map(cb => cb.nextElementSibling.textContent.trim().replace(/\s+/g, ' '));
 
         if (activeLocations.length > 0) {
             filtered = filtered.filter(p => activeLocations.some(loc => p.location && p.location.includes(loc)));
